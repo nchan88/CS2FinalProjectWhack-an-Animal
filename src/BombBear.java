@@ -1,4 +1,6 @@
-public class BombBear {
+import java.awt.*;
+
+public class BombBear extends Animal {
     //A bear that when you click it explodes. Custom artwork possibly. Gotta make it vibrant
     private Image BombBearIcon;
     private int explosionClock;
@@ -6,7 +8,7 @@ public class BombBear {
         private int dx, dy;
         private static final int MAX_SPEED = 8;
         private int speed;
-        public BombBear(GameViewer screen, int speed, int MAX_SPEED - (int) (Math.random() * MAX_SPEED * 2, int )
+        public BombBear(GameViewer screen, int speed)
         {
             super(screen);
             //speed gradually increased
@@ -16,7 +18,11 @@ public class BombBear {
         }
 
         public void explodes() {
-            // This creates a 1-in-7 probability we change the fish's speed.
+            //If clicked, lose life.
 
         }
+    public void doyourthing()
+    {
+        System.out.println("yo");
+    }
 }
