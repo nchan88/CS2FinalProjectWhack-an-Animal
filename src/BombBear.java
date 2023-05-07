@@ -2,19 +2,19 @@ import java.awt.*;
 
 public class BombBear extends Animal {
     //A bear that when you click it explodes. Custom artwork possibly. Gotta make it vibrant
-    private Image BombBearIcon;
+    private Image bearImage;
     private int explosionClock;
-
-        private int dx, dy;
-        private static final int MAX_SPEED = 8;
+    private static final int MAX_SPEED = 8;
+        private int x, y;
         private int speed;
-        public BombBear(GameViewer screen, int speed)
+        public BombBear(GameViewer screen, int speedFactor)
         {
             super(screen);
+            x = (int) (Math.random() * screen.getWidth() * 0.8);
+            y = (int) (Math.random() * screen.getHeight() * 0.8);
             //speed gradually increased
             this.explosionClock = speed;
-            this.dx = MAX_SPEED - (int) (Math.random() * MAX_SPEED * 2);
-            this.dy = MAX_SPEED - (int) (Math.random() * MAX_SPEED * 2);
+            bearImage = screen.getImages()[2];
         }
 
         public void explodes() {
@@ -23,6 +23,17 @@ public class BombBear extends Animal {
         }
     public void doyourthing()
     {
-        System.out.println("yo");
+        explodes();
+    }
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    public void draw(Graphics g) {
+        //draws every object currently on the board
+        g.drawImage(bearImage, x, y, getScreen());
     }
 }

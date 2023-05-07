@@ -6,9 +6,7 @@ public class Animal {
     private int x, y;
     private int windowWidth;
     private int windowHeight;
-    private static final int MAX_SPEED = 8;
     public Animal(GameViewer screen) {
-        // Initialize the tank values
         this.screen = screen;
         this.windowWidth = screen.getWidth();
         this.windowHeight = screen.getHeight();
@@ -17,15 +15,29 @@ public class Animal {
         this.x = (int) (Math.random() * windowWidth * 0.8);
         this.y = (int) (Math.random() * windowHeight * 0.8);
         //Instiatiate protocal making it so that it cant go to the same place twice? Or make it feature?
+        //Im leaning to making it a feature
     }
 
     public void doyourthing()
     {
-//        //until clicked, just stay put
-//        while (!isClicked)
-//        {
-//            draw()
-//        }
+//        if (clicked == true)
+        {
+            //delete the object not just the image
+            //add to score
+        }
+        System.out.println("Animal");
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public GameViewer getScreen() {
+        return screen;
     }
 
     public void draw(Graphics g) {
