@@ -42,6 +42,6 @@ public class Animal {
 
     public void draw(Graphics g) {
         //draws every object currently on the board
-            g.drawImage(moleimage, x, y, screen);
+        g.drawImage(moleimage, x, y, screen);
     }
 }

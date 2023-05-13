@@ -2,8 +2,10 @@ import java.awt.*;
 
 public class BombBear extends Animal {
     //A bear that when you click it explodes. Custom artwork possibly. Gotta make it vibrant
+    private Image evilBear;
     private Image bearImage;
     private int explosionClock;
+    private int count;
     private static final int MAX_SPEED = 8;
         private int x, y;
         private int speed;
@@ -15,14 +17,17 @@ public class BombBear extends Animal {
             //speed gradually increased
             this.explosionClock = speed;
             bearImage = screen.getImages()[2];
+            evilBear = screen.getImages()[3];
+            count = 0;
+
         }
 
         public void explodes() {
             //If clicked, lose life.
-
         }
     public void doyourthing()
     {
+        //change image to evil looking bear
         explodes();
     }
     public int getX() {
@@ -34,6 +39,15 @@ public class BombBear extends Animal {
     }
     public void draw(Graphics g) {
         //draws every object currently on the board
-        g.drawImage(bearImage, x, y, getScreen());
+        if (count == 0)
+        {
+            g.drawImage(bearImage, x, y, getScreen());
+            count = 1;
+        }
+        else
+        {
+            g.drawImage(evilBear, x, y, getScreen());
+            count = 0;
+        }
     }
 }
