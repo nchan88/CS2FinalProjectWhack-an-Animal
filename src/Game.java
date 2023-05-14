@@ -103,7 +103,6 @@ public class Game implements ActionListener {
         }
     }
     public ArrayList<Animal> getAnimals() {
-        System.out.println(animals);
         return animals;
     }
     public double calculateTotal() {

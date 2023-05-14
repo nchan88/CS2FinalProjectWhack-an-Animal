@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
 public class GameViewer extends JFrame implements MouseListener {
         private Image windowImage;
         private Image[] animalImages;
@@ -84,8 +85,13 @@ public class GameViewer extends JFrame implements MouseListener {
                         g.setGameOver();
                     }
                 }
+                //If I don't make a copy of animals here then I will get the concurrent modification exception error
+                //While this error doesn't seem to effect how my program actually runs, if I don't include the lines below
+                //my terminal is flooded with error messages.
+                ArrayList<Animal> iterativecopy = new ArrayList<Animal>();
+                iterativecopy.addAll(g.getAnimals());
                 //Checks if you click any animals.
-                for (Animal a : g.getAnimals()) {
+                for (Animal a : iterativecopy) {
                     //If your click is within the borders of any animal, that animal is removed.
                     //The reason there are different parameters for the friendlybear class is because it is slightly bigger
                     //and therefore has an adjusted hitbox than the snail and mole.
