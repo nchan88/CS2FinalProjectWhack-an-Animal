@@ -95,9 +95,10 @@ public class GameViewer extends JFrame implements MouseListener {
                     //If your click is within the borders of any animal, that animal is removed.
                     //The reason there are different parameters for the friendlybear class is because it is slightly bigger
                     //and therefore has an adjusted hitbox than the snail and mole.
-                    if (e.getX() >= a.getX() && e.getX() <= a.getX() + ANIMAL_SIZE && e.getY() >= a.getY() &&
+                    if ((e.getX() >= a.getX() && e.getX() <= a.getX() + ANIMAL_SIZE && e.getY() >= a.getY() &&
                         e.getY() <= a.getY() + ANIMAL_SIZE || (a instanceof FriendlyBear && e.getX() >= a.getX() &&
-                        e.getX() <= a.getX() + BEAR_SIZE && e.getY() >= a.getY() && e.getY() <= a.getY() + BEAR_SIZE)) {
+                        e.getX() <= a.getX() + BEAR_SIZE && e.getY() >= a.getY() && e.getY() <= a.getY() + BEAR_SIZE))
+                        && !(a instanceof BombBear)) {
                         g.getAnimals().remove(a);
                         score++;
                         misclicks--;
@@ -105,7 +106,8 @@ public class GameViewer extends JFrame implements MouseListener {
                         repaint();
                     }
                     //If a BombBear is clicked ends the game and mark the game as a loss.
-                    if (a instanceof BombBear && e.getX() >= a.getX() && e.getX() <= a.getX() + 62 && e.getY() >= a.getY()
+                    //Player has to make sure even if overlapping that they do not press a BombBear.
+                    else if (a instanceof BombBear && e.getX() >= a.getX() && e.getX() <= a.getX() + 62 && e.getY() >= a.getY()
                         && e.getY() <= a.getY() + 62) {
                             lost = true;
                             g.getAnimals().clear();
