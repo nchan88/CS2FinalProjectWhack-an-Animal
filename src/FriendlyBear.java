@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 public class FriendlyBear extends Animal {
+    //A friendly bear that you should click on because it wants to give you a hug.
+    // (Unlike its cousin Greg who has developed explosive tendencies)
     private GameViewer screen;
     private Image friendlybearImage;
     private int x, y;

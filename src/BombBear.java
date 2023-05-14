@@ -1,35 +1,20 @@
 import java.awt.*;
 
 public class BombBear extends Animal {
-    //A bear that when you click it explodes. Custom artwork possibly. Gotta make it vibrant
+    //A bear that when you click on it the game ends.
     private Image evilBear;
     private Image bearImage;
-    private int explosionClock;
     private int count;
-    private static final int MAX_SPEED = 8;
         private int x, y;
-        private int speed;
-        public BombBear(GameViewer screen, int speedFactor)
+        public BombBear(GameViewer screen)
         {
             super(screen);
+            count = 0;
             x = (int) (Math.random() * screen.getWidth() * 0.8);
             y = (int) (Math.random() * screen.getHeight() * 0.8);
-            //speed gradually increased
-            this.explosionClock = speed;
             bearImage = screen.getImages()[2];
             evilBear = screen.getImages()[3];
-            count = 0;
-
         }
-
-        public void explodes() {
-            //If clicked, lose life.
-        }
-    public void doyourthing()
-    {
-        //change image to evil looking bear
-        explodes();
-    }
     public int getX() {
         return x;
     }
@@ -38,7 +23,9 @@ public class BombBear extends Animal {
         return y;
     }
     public void draw(Graphics g) {
-        //draws every object currently on the board
+        //Draws every bombbear object currently on the board.
+        //This if statement makes it so everytime the Bombbear is drawn, it alternates its image, giving it an
+        //appearance of flashing rapidly
         if (count == 0)
         {
             g.drawImage(bearImage, x, y, getScreen());

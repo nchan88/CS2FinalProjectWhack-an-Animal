@@ -1,8 +1,8 @@
-import javax.swing.*;
 import java.awt.*;
 public class Animal {
     private GameViewer screen;
     private Image moleimage;
+    //All animals need coordinates to know when they are clicked.
     private int x, y;
     private int windowWidth;
     private int windowHeight;
@@ -11,23 +11,14 @@ public class Animal {
         this.windowWidth = screen.getWidth();
         this.windowHeight = screen.getHeight();
         moleimage = screen.getImages()[0];
-        // Initialize the animals random location
+        // Initializes the animals random location.
         this.x = (int) (Math.random() * windowWidth * 0.8);
         this.y = (int) (Math.random() * windowHeight * 0.8);
-        //Instiatiate protocal making it so that it cant go to the same place twice? Or make it feature?
-        //Im leaning to making it a feature
     }
-
-    public void doyourthing()
-    {
-//        if (clicked == true)
-        {
-            //delete the object not just the image
-            //add to score
-        }
-        System.out.println("Animal");
+    //This method does not do anything for the bear and animal classes, however, I want to make it a polymorphic so that
+    //new animals could be created in the future.
+    public void doyourthing() {
     }
-
     public int getX() {
         return x;
     }
@@ -41,7 +32,7 @@ public class Animal {
     }
 
     public void draw(Graphics g) {
-        //draws every object currently on the board
+        //draws every animal object currently on the board
         g.drawImage(moleimage, x, y, screen);
     }
 }
